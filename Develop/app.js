@@ -33,3 +33,35 @@ const render = require("./lib/htmlRenderer");
 // for further information. Be sure to test out each class and verify it generates an 
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work!```
+
+
+
+inquirer
+  .prompt( {
+    /* Pass your questions in here */
+    type: "input",
+    name: "name",
+    message: "Enter your Name: ",
+},
+{
+    /* Pass your questions in here */
+    type: "input",
+    name: "id",
+    message: "Enter your ID: ",
+},
+{
+    /* Pass your questions in here */
+    type: "input",
+    name: "email",
+    message: "Enter your Email: ",
+})
+  .then(answers => {
+    // Use user feedback for... whatever!!
+  })
+  .catch(error => {
+    if(error.isTtyError) {
+      // Prompt couldn't be rendered in the current environment
+    } else {
+      // Something else when wrong
+    }
+  });
