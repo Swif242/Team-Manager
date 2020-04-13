@@ -11,24 +11,26 @@ class Employee {
 
 
     getName() {
+        this.name = `${answers.name}`;
 
     }
 
 
     getId() {
-
+        this.id = `${answers.id}`;
     }
 
 
     getEmail() {
-
+        this.email = `${answers.email}`;
     }
 
 
     getRole() {
-
+       
         return Employee
     }
 
 }
+
 module.exports = Employee;
