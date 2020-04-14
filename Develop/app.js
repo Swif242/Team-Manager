@@ -74,7 +74,7 @@ inquirer.prompt([
 ])
     .then(answers => {
         // disable when no longer needed
-        console.log(`Answers entered: ${JSON.stringify(answers)}`);  // the ${answers.join(", ")}`), wasn't firing so i did stringify and it worked 
+        // console.log(`Answers entered: ${JSON.stringify(answers)}`); 
         const employee = new Employee(answers.name, answers.id, answers.email);
         const manager = new Manager(answers.name, answers.id, answers.email, answers.office);
         const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
@@ -87,13 +87,13 @@ inquirer.prompt([
         console.log("-----------------");
         console.log(intern);
 
-        // fs.writeFile("storage.json", employee, function (err) {
-        //     if (err) throw err;
-        //     console.log(answers[0]);
-        //     console.log("it worked");
+        fs.writeFile("storage.json", employee, function (err) {
+            if (err) throw err;
+            // console.log(answers[0]);
+            console.log("it worked");
            
     
-        // });
+        });
         // console.log(answers.name)
 
        
