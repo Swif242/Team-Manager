@@ -8,27 +8,27 @@ class Employee {
         this.email = email;
     }
 
-
-
-    getName() {
-        this.name = `${answers.name}`;
-
-    }
-
+    getName(){
+        return this.name;
+     }
+    //  setName(name){
+    //     this.name = name;
+    //     console.log(name)
+    //  }
 
     getId() {
-        this.id = `${answers.id}`;
+      return this.id
     }
 
 
     getEmail() {
-        this.email = `${answers.email}`;
+       return this.email;
     }
 
 
     getRole() {
        
-        return Employee
+        return "Employee"
     }
 
 }

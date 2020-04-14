@@ -50,20 +50,50 @@ inquirer.prompt([
         type: "input",
         name: "email",
         message: "Enter your Email: ",
-    }
+    },
+    {
+      
+        type: "input",
+        name: "office",
+        message: "Enter your office number: ",
+    },
+    {
+      
+        type: "input",
+        name: "github",
+        message: "Enter your Github username: ",
+    },
+    {
+      
+        type: "input",
+        name: "school",
+        message: "Enter your school name: ",
+    },
+    
+
 ])
     .then(answers => {
         // disable when no longer needed
         console.log(`Answers entered: ${JSON.stringify(answers)}`);  // the ${answers.join(", ")}`), wasn't firing so i did stringify and it worked 
-        const emp = new Employee(answers.name, answers.id, answers.email);
-        console.log(emp);
+        const employee = new Employee(answers.name, answers.id, answers.email);
+        const manager = new Manager(answers.name, answers.id, answers.email, answers.office);
+        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
+        const intern = new Intern(answers.name, answers.id, answers.email,answers.school)
+        console.log(employee);
+        console.log("-----------------");
+        console.log(manager);
+        console.log("-----------------");
+        console.log(engineer);
+        console.log("-----------------");
+        console.log(intern);
 
-        fs.writeFile("storage.json", Employee(emp), function (err) {
-            if (err) throw err;
-            console.log(answers[0]);
-            console.log("it worked");
-            
-        });
+        // fs.writeFile("storage.json", employee, function (err) {
+        //     if (err) throw err;
+        //     console.log(answers[0]);
+        //     console.log("it worked");
+           
+    
+        // });
         // console.log(answers.name)
 
        
