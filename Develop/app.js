@@ -108,8 +108,9 @@ const int = [  //intern question
         name: "add",
         message: "Add another Team Member? ",
     },
-]
+];
 
+// team array
 const team = [];
 
 
@@ -117,7 +118,6 @@ const ask = () => {
     inquirer
         //ask base employee questions plus the Role
         .prompt(emp)
-
 
         .then(response => {
             console.log(response)
@@ -128,7 +128,6 @@ const ask = () => {
                 inquirer
                     .prompt(man)
                     .then(answers => {
-                        console.log(answers.office)
                         //take in (emp) response and add (man) answer
                         const manager = new Manager(response.name, response.id, response.email, answers.office);
                         //push into team array
@@ -143,11 +142,12 @@ const ask = () => {
                         }
                         // if false write team array to storage file
                         else if(answers.add == false){
-                            fs.writeFile("storage.json", JSON.stringify(team), function (err) {
+                            render(team);
+                            fs.writeFile(outputPath, JSON.stringify(team), function (err) {
                                 if (err) throw err;
                                 console.log("team created!!");
                             });
-
+                            
                         }
                     });
 
@@ -157,8 +157,8 @@ const ask = () => {
             else if (response.role == "engineer") {
                 inquirer
                     .prompt(eng)
+
                     .then(answers => {
-                        console.log(answers.github)
                         //take in (emp) response and add (eng) answer
                         const engineer = new Engineer(response.name, response.id, response.email, answers.github);
                         //push into team array
@@ -177,7 +177,7 @@ const ask = () => {
                                 if (err) throw err;
                                 console.log("team created!!");
                             });
-
+                            render(team);
                         }
                     });
 
@@ -187,8 +187,8 @@ const ask = () => {
             else if (response.role == "intern") {
                 inquirer
                     .prompt(int)
+
                     .then(answers => {
-                        console.log(answers.school)
                         //take in (emp) response and add (int) answer
                         const intern = new Intern(response.name, response.id, response.email, answers.school);
                         //push into team array
@@ -207,23 +207,22 @@ const ask = () => {
                                 if (err) throw err;
                                 console.log("team created!!");
                             });
-
+                            render(team);
                         }
                     });
 
             }
             else {
                 console.log("didn't work")
-            }
-
-           
+            };
         })
         .catch(error => {
             if (error.isTtyError) {
                 // Prompt couldn't be rendered in the current environment
             } else {
                 // Something else when wrong
-            }
+            };
         });
 }
+// start the inquirer function
 ask();
