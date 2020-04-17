@@ -35,14 +35,14 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const emp = [     // Base employee questions
     {
 
-        type: "input",
+        type: "list",
         name: "role",
         message: "Choose your Role: ",
-        // choices: [
-        //     "Manager",
-        //     "Engineer",
-        //     "Intern",
-        // ]
+        choices: [
+            "Manager",
+            "Engineer",
+            "Intern",
+        ]
     },
     {
 
@@ -121,11 +121,11 @@ const ask = () => {
         .prompt(emp)
 
         .then(response => {
-            console.log(response)
+           
             const employee = new Employee(response.name, response.id, response.email);
 
             // if the Role equals manager then ask the Manager question
-            if (response.role == "manager") {
+            if (response.role == "Manager") {
                 inquirer
                     .prompt(man)
                     .then(answers => {
@@ -135,7 +135,7 @@ const ask = () => {
                         team.push(manager);
 
                         console.log(manager);
-                        console.log("manager pushed!!")
+                        console.log("Manager pushed!!")
 
                         // ask to add another employee, if true loop inquirer (emp)
                         if (answers.add == true) {
@@ -162,7 +162,7 @@ const ask = () => {
             }
 
             // if the Role equals engineer then ask the engineer question
-            else if (response.role == "engineer") {
+            else if (response.role == "Engineer") {
                 inquirer
                     .prompt(eng)
 
@@ -173,7 +173,7 @@ const ask = () => {
                         team.push(engineer);
 
                         console.log(engineer);
-                        console.log("engineer pushed!!")
+                        console.log("Engineer pushed!!")
 
                         // ask to add another employee, if true loop inquirer (emp)
                         if (answers.add == true) {
@@ -198,7 +198,7 @@ const ask = () => {
             }
 
             // if the Role equals intern then ask the intern question
-            else if (response.role == "intern") {
+            else if (response.role == "Intern") {
                 inquirer
                     .prompt(int)
 
@@ -209,7 +209,7 @@ const ask = () => {
                         team.push(intern);
 
                         console.log(intern);
-                        console.log("intern pushed!")
+                        console.log("Intern pushed!!")
 
                         // ask to add another employee, if true loop inquirer (emp)
                         if (answers.add == true) {
@@ -233,7 +233,7 @@ const ask = () => {
 
             }
             else {
-                console.log("didn't work")
+                console.log("Please Choose a Role")
             };
         })
         .catch(error => {
