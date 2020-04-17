@@ -1,0 +1,15 @@
+#jumbotron{
+    background-image: url("/Assets/images/tech_background.jpg");
+    background-position: 40% 65%;
+    background-repeat: no-repeat;
+    color: white;
+    border-left: none;
+    border-bottom:rgb(8, 119, 194);;
+    border-style: solid;
+    border-bottom-width: 6px;
+}
+
+body{
+    background-image: url("/Assets/images/abstract-technology-background.jpg");
+    
+};

@@ -114,6 +114,7 @@ const int = [  //intern question
 const team = [];
 
 
+
 const ask = () => {
     inquirer
         //ask base employee questions plus the Role
@@ -141,13 +142,20 @@ const ask = () => {
                             ask();
                         }
                         // if false write team array to storage file
-                        else if(answers.add == false){
-                            render(team);
-                            fs.writeFile(outputPath, JSON.stringify(team), function (err) {
+                        else if (answers.add == false) {
+
+                            // creat an output directory to write to
+                            fs.mkdir(__dirname + '/output', function (err) {
+                                if (err) {
+                                    throw err;
+                                }
+                            })
+                            // write to the output directory 
+                            fs.writeFile(outputPath, render(team), function (err) {
                                 if (err) throw err;
                                 console.log("team created!!");
                             });
-                            
+
                         }
                     });
 
@@ -172,12 +180,18 @@ const ask = () => {
                             ask();
                         }
                         // if false write team array to storage file
-                        else if(answers.add == false){
-                            fs.writeFile("storage.json", JSON.stringify(team), function (err) {
+                        else if (answers.add == false) {
+                            // creat an output directory to write to
+                            fs.mkdir(__dirname + '/output', function (err) {
+                                if (err) {
+                                    throw err;
+                                }
+                            })
+                            // write to the output directory 
+                            fs.writeFile(outputPath, render(team), function (err) {
                                 if (err) throw err;
                                 console.log("team created!!");
                             });
-                            render(team);
                         }
                     });
 
@@ -202,12 +216,18 @@ const ask = () => {
                             ask();
                         }
                         // if false write team array to storage file
-                        else if(answers.add == false){
-                            fs.writeFile("storage.json", JSON.stringify(team), function (err) {
+                        else if (answers.add == false) {
+                            // creat an output directory to write to
+                            fs.mkdir(__dirname + '/output', function (err) {
+                                if (err) {
+                                    throw err;
+                                }
+                            })
+                            // write to the output directory 
+                            fs.writeFile(outputPath, render(team), function (err) {
                                 if (err) throw err;
                                 console.log("team created!!");
                             });
-                            render(team);
                         }
                     });
 
@@ -218,9 +238,9 @@ const ask = () => {
         })
         .catch(error => {
             if (error.isTtyError) {
-                // Prompt couldn't be rendered in the current environment
+                console.log("Prompt couldn't be rendered in the current environment")
             } else {
-                // Something else when wrong
+                // Something else whent wrong
             };
         });
 }
